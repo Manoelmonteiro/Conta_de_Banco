@@ -1,7 +1,9 @@
-public class Conta{
+public class Conta {
     private String nome;
     private String cpf;
     private Double saldo;
+
+
 
     public Conta(String nome, String cpf) {
         this.setNome(nome);
@@ -39,13 +41,14 @@ public class Conta{
             System.out.println("Prezado, " + cliente01.getNome() + ", o valor de transferencia é menor do que o saldo em conta." +
                     "\nSaldo atual: " + cliente01.getSaldo());
             System.out.println("Transferencia nao realizada.");
-            if (valorEnviado <= cliente01.getSaldo()) {
-
-                cliente01.subtracaoDeDinheiro(valorEnviado);
-                cliente02.deposito(valorEnviado);
-                System.out.println("Transação feita com sucesso.\n" + cliente01.getNome() + " enviou " + valorEnviado + "R$ para " + cliente02.getNome() + "\n");
-            }
         }
+
+        if (valorEnviado <= cliente01.getSaldo()) {
+            cliente01.subtracaoDeDinheiro(valorEnviado);
+            cliente02.deposito(valorEnviado);
+            System.out.println("Transação feita com sucesso.\n" + cliente01.getNome() + " enviou " + valorEnviado + "R$ para " + cliente02.getNome() + "\n");
+        }
+        cliente01.imprimeDados();
     }
 
     public void imprimeDados(){
