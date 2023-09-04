@@ -1,7 +1,11 @@
+import java.util.Scanner;
+
 public class Conta {
     private String nome;
     private String cpf;
     private Double saldo;
+
+    Scanner scan = new Scanner(System.in);
 
 
 
@@ -30,11 +34,18 @@ public class Conta {
     public Double getSaldo() {
         return saldo;
     }
-    public void deposito(Double valor) {
-        this.saldo =saldo + valor;
-    }
+
+    public void deposito(){
+        Double valor;
+        valor=scan.nextDouble();
+        this.saldo =saldo + valor;}
+
     private void subtracaoDeDinheiro(Double valor){
         this.saldo = saldo - valor;
+    }
+
+    private void transferenciaDeDinheiro(Double valor) {
+        this.saldo =saldo + valor;
     }
     public void transferencia(Conta cliente01, Conta cliente02, Double valorEnviado) {
         if (valorEnviado > cliente01.getSaldo()) {
@@ -45,7 +56,7 @@ public class Conta {
 
         if (valorEnviado <= cliente01.getSaldo()) {
             cliente01.subtracaoDeDinheiro(valorEnviado);
-            cliente02.deposito(valorEnviado);
+            cliente02.transferenciaDeDinheiro(valorEnviado);
             System.out.println("Transação feita com sucesso.\n" + cliente01.getNome() + " enviou " + valorEnviado + "R$ para " + cliente02.getNome() + "\n");
         }
         cliente01.imprimeDados();
