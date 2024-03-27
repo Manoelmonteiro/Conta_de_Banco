@@ -37,6 +37,8 @@ public class Conta {
 
     public void deposito(){
         Double valor;
+
+        System.out.println("Digite o valor a ser depositado:");
         valor=scan.nextDouble();
         this.saldo =saldo + valor;}
 
@@ -63,7 +65,7 @@ public class Conta {
     }
 
     public void imprimeDados(){
-        System.out.println("\nNome do cliente: "+ getNome() + "\nCPF: "+getCpf()+"\nSaldo do cliente: "+getSaldo());
+        System.out.println("\nNome do cliente: "+ getNome() + "\nCPF: "+getCpf()+"\nSaldo do cliente: R$"+getSaldo());
     }
 }
 
